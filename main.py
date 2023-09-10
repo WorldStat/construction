@@ -1,5 +1,8 @@
+# main.py
+
 from classes import User, ConstructionManager, Project
 from functions import add_project, list_projects
+import gui  
 
 def main():
     user = User("JohnDoe", "johndoe@example.com")
@@ -15,13 +18,10 @@ def main():
         choice = input("Enter your choice: ")
 
         if choice == '1':
-            name = input("Enter project name: ")
-            address = input("Enter project address: ")
-            id = input("Enter project ID: ")
-            manager = input("Enter project manager: ")
-            po = input("Enter project PO: ")
-            invoice = input("Enter project invoice: ")
-            
+            # Use the GUI module to get project information
+            name, address, id, manager, po, invoice = gui.get_project_info()
+
+            # Create a Project object and add it to the data storage
             project = Project(name, address, id, manager, po, invoice)
             add_project(project)
             print("Project added successfully!")
